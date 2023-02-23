@@ -4,7 +4,7 @@ indicators <- c(
     "NY.GDP.MKTP.KD.ZG", "NY.GDP.PCAP.CD",
     "NY.GDP.PCAP.KD.ZG", "TG.VAL.TOTL.GD.ZS"
 )
-
+install.packages("WDI", repos = "http://cran.us.r-project.org")
 library(WDI)
 
 wbInfo <- WDI(
