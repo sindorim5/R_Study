@@ -49,7 +49,7 @@ titanic_train <- titanic_full[titanic_full$IsTrainSet == TRUE, ]
 titanic_test <- titanic_full[titanic_full$IsTrainSet == FALSE, ]
 titanic_train$Survived <- as.factor(titanic_train$Survived)
 
-nonvars = c("PassengerId", "Name", "Ticket", "Cabin", "Embarked")
+nonvars <- c("PassengerId", "Name", "Ticket", "Cabin", "Embarked")
 titanic_train <- titanic_train[, !(names(titanic_train) %in% nonvars)]
 
 glm1 <- glm(Survived ~ ., data = titanic_train, family = binomial)
@@ -68,7 +68,7 @@ table(titanic_train$Survived, logistic_pred >= 0.5)
 Predict1 <- predict(glm1, type = "response", newdata = titanic_test)
 Predict2 <- predict(glm2, type = "response", newdata = titanic_test)
 
-Survived1 = as.numeric(Predict1 >= 0.5)
+Survived1 <- as.numeric(Predict1 >= 0.5)
 Survived2 <- as.numeric(Predict2 >= 0.5)
 
 PassengerId <- titanic_test$PassengerId
