@@ -1,130 +1,110 @@
 train <-
     read.csv(
         "./data/house_prices/train.csv",
-        na.strings = c("", "na", "NA"),
-        stringsAsFactors = TRUE,
-        header = TRUE
     )
 test <-
     read.csv(
         "./data/house_prices/test.csv",
-        na.strings = c("", "na", "NA"),
-        stringsAsFactors = TRUE,
-        header = TRUE
     )
 
-str(train)
-str(test)
-
-test$SalePrice <- NA
+test$SalePrice <- 0
 all <- rbind(train, test)
-str(all)
-
 
 # 데이터 전처리
 library(dplyr)
+
+str(all)
 
 sapply(all, function(x) {
     sum(is.na(x))
 })
 
-## MSZoning
-all[is.na(all$MSZoning), "MSZoning"] <- as.factor("RL")
-summary(all$MSZoning)
+na.cols <- which(colSums(is.na(all)) > 0)
+sort(colSums(sapply(all[na.cols], is.na)), decreasing = TRUE)
 
-## LotFrontage
-LotFrontage.median <- median(all$LotFrontage, na.rm = TRUE)
-all[is.na(all$LotFrontage), "LotFrontage"] <- LotFrontage.median
+## int형부터. 없으면 0을 넣어줌.
+all$LotFrontage[is.na(all$LotFrontage)] <- 0
+all$MasVnrArea[is.na(all$MasVnrArea)] <- 0
+all$BsmtFinSF1[is.na(all$BsmtFinSF1)] <- 0
+all$BsmtFinSF2[is.na(all$BsmtFinSF2)] <- 0
+all$BsmtUnfSF[is.na(all$BsmtUnfSF)] <- 0
+all$TotalBsmtSF[is.na(all$TotalBsmtSF)] <- 0
+all$BsmtFullBath[is.na(all$BsmtFullBath)] <- 0
+all$BsmtHalfBath[is.na(all$BsmtHalfBath)] <- 0
+all$GarageCars[is.na(all$GarageCars)] <- 0
+all$GarageArea[is.na(all$GarageArea)] <- 0
 
-## Alley는 제외하자
+## GarageYrBlt. 집이 지어진 날짜와 동일하다고 추정하자.
+all$GarageYrBlt[is.na(all$GarageYrBlt)] <- all$YearBuilt[is.na(all$GarageYrBlt)]
+all$GarageYrBlt[all$GarageYrBlt == 2207] <- 2007
 
-## Utilities
-summary(all$Utilities)
-all[is.na(all$Utilities), "Utilities"] <- as.factor("AllPub")
+## 값 NA이 아닌 진짜 NA 대체
+### MSZoning. RL이 제일 많다.
+all[is.na(all$MSZoning), "MSZoning"] <- "RL"
 
-## Exterior1st
-summary(all$Exterior1st)
-all[is.na(all$Exterior1st), "Exterior1st"] <- as.factor("VinylSd")
+### Exterior1st. VinylSd가 제일 많다.
+table(all$Exterior1st)
+all[is.na(all$Exterior1st), "Exterior1st"] <- "VinylSd"
 
-## Exterior2nd
-summary(all$Exterior2nd)
-all[is.na(all$Exterior2nd), "Exterior2nd"] <- as.factor("VinylSd")
+### Exterior2nd. VinylSd가 제일 많다.
+all[is.na(all$Exterior2nd), "Exterior2nd"] <- "VinylSd"
 
-## MasVnrType
-summary(all$MasVnrType)
-all[is.na(all$MasVnrType), "MasVnrType"] <- as.factor("None")
+# MasVnrType. NA를 None으로 대체
+all[is.na(all$MasVnrType), "MasVnrType"] <- "None"
 
-## MasVnrArea
-summary(all$MasVnrArea)
-temp <- subset(all, MasVnrArea > 0)
-nrow(temp)
-MasVnrArea.median <- median(all$MasVnrArea, na.rm = TRUE)
-all[is.na(all$MasVnrArea), "MasVnrArea"] <- MasVnrArea.median
-
-## BsmtQual, factor로 가져와서 None으로 바꾸면 없는 요소라고 오류남
-## char로 바꾸고 다시 넣을 것
-summary(all$BsmtQual)
-all$BsmtQual <- as.character(all$BsmtQual)
-all[is.na(all$BsmtQual), "BsmtQual"] <- "None"
-all$BsmtQual <- as.factor(all$BsmtQual)
-
-## BsmtCond
-summary(all$BsmtCond)
-all$BsmtCond <- as.character(all$BsmtCond)
-all[is.na(all$BsmtCond), "BsmtCond"] <- "None"
-all$BsmtCond <- as.factor(all$BsmtCond)
-
-## BsmtExposure
-summary(all$BsmtExposure)
-all$BsmtExposure <- as.character(all$BsmtExposure)
-all[is.na(all$BsmtExposure), "BsmtExposure"] <- "None"
-all$BsmtExposure <- as.factor(all$BsmtExposure)
-
-## BsmtFinType1
-summary(all$BsmtFinType1)
-all$BsmtFinType1 <- as.character(all$BsmtFinType1)
-all[is.na(all$BsmtFinType1), "BsmtFinType1"] <- "None"
-all$BsmtFinType1 <- as.factor(all$BsmtFinType1)
-
-## BsmtFinSF1
-summary(all$BsmtFinSF1)
-BsmtFinSF1.median <- median(all$BsmtFinSF1, na.rm = TRUE)
-all[is.na(all$BsmtFinSF1), "BsmtFinSF1"] <- BsmtFinSF1.median
-
-## BsmtFinType2
-summary(all$BsmtFinType2)
-all$BsmtFinType2 <- as.character(all$BsmtFinType2)
-all[is.na(all$BsmtFinType2), "BsmtFinType2"] <- "None"
-all$BsmtFinType2 <- as.factor(all$BsmtFinType2)
-
-## BsmtFinSF2
-summary(all$BsmtFinSF2)
-all[is.na(all$BsmtFinSF2), "BsmtFinSF2"] <- 0
-
-## BsmtUnfSF
-summary(all$BsmtUnfSF)
-all[is.na(all$BsmtUnfSF), "BsmtUnfSF"] <- 0
-
-## TotalBsmtSF
-summary(all$TotalBsmtSF)
-all[is.na(all$TotalBsmtSF), "TotalBsmtSF"] <- 0
-
-## Electrical
-summary(all$Electrical)
-all[is.na(all$Electrical), "Electrical"] <- "SBrkr"
-
-## BsmtFullBath
-summary(all$BsmtFullBath)
-all[is.na(all$BsmtFullBath), "BsmtFullBath"] <- 0
-
-## BsmtHalfBath
-summary(all$BsmtHalfBath)
-all[is.na(all$BsmtHalfBath), "BsmtHalfBath"] <- 0
-
-## KitchenQual
-summary(all$KitchenQual)
+### KitchenQual. TA가 제일 많다.
 all[is.na(all$KitchenQual), "KitchenQual"] <- "TA"
-View(all %>% select(KitchenQual))
 
-## Functional
-###################
+### Functional. Typ가 제일 많다.
+all$Functional[is.na(all$Functional)] <- "Typ"
+
+### SaleType. WD가 제일 많다.
+all$SaleType[is.na(all$SaleType)] <- "WD"
+
+# 값 NA를 다른 말로 대체
+all$Alley[is.na(all$Alley)] <- "None"
+all$BsmtQual[is.na(all$BsmtQual)] <- "None"
+all$BsmtCond[is.na(all$BsmtCond)] <- "None"
+all$BsmtExposure[is.na(all$BsmtExposure)] <- "None"
+all$BsmtFinType1[is.na(all$BsmtFinType1)] <- "None"
+all$BsmtFinType2[is.na(all$BsmtFinType2)] <- "None"
+all$Electrical[is.na(all$Electrical)] <- "None"
+all$FireplaceQu[is.na(all$FireplaceQu)] <- "None"
+all$GarageType[is.na(all$GarageType)] <- "None"
+all$GarageFinish[is.na(all$GarageFinish)] <- "None"
+all$GarageQual[is.na(all$GarageQual)] <- "None"
+all$GarageCond[is.na(all$GarageCond)] <- "None"
+all$PoolQC[is.na(all$PoolQC)] <- "None"
+all$Fence[is.na(all$Fence)] <- "None"
+all$MiscFeature[is.na(all$MiscFeature)] <- "None"
+
+# Id, Utilities 열은 버린다.
+all$Utilities <- NULL
+all$Id <- NULL
+
+# NA 체크
+na.cols <- which(colSums(is.na(all)) > 0)
+
+# string -> factor
+all <- as.data.frame(unclass(all), stringsAsFactors = TRUE)
+
+# 정제된 데이터를 다시 train과 test로
+train <- all[(all$SalePrice) > 0, ]
+test <- all[(all$SalePrice) == 0, ]
+
+# applying models
+library(caret)
+
+# 랜덤 포레스트
+library(randomForest)
+learn_rf <- randomForest(SalePrice ~ .,
+    data = train,
+    ntree = 500, proximity = TRUE, importance = TRUE
+)
+cm_rf <- predict(learn_rf, newdata = test)
+Id <- test$Id
+output_df <- as.data.frame(Id)
+output_df$SalePrice <- cm_rf
+output_df$SalePrice <- as.factor(output_df$SalePrice)
+
+write.csv(output_df, file = "kaggle_submission.csv", row.names = FALSE)
