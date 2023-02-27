@@ -9,8 +9,8 @@ library(reticulate)
 conda_list()
 use_python("C:/ProgramData/Anaconda3/python.exe")
 use_condaenv("Anaconda3")
+# use_condaenv("env_tf")
 py_config()
-
 reticulate::repl_python()
 
 import numpy as np
@@ -18,7 +18,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import IPython
-import matplotlib.pyplot as plt
 
 #%matplotlib inline
 
@@ -299,7 +298,7 @@ history = model.fit(
     shuffle=False,
     validation_data=val_ds,
 )
-############################ 여기 부터 해야됨 17:35 ############################
+
 for name, values in history.history.items():
     plt.plot(values)
 
