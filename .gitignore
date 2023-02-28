@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+data/nasa/labels.csv
+data/nasa/satellite_pos.csv
+data/nasa/solar_wind.csv
+data/nasa/sunspots.csv
