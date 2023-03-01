@@ -11,12 +11,12 @@ library(ggplot2)
 library(GGally)
 library(skimr)
 library(inspectdf)
-library(shiny)
 library(randomForest)
 library(usethis)
 
 all <- read.csv(
-    file = "~/Desktop/AuroraData/aurora_complete.csv",
+    # file = "~/Desktop/AuroraData/aurora_complete.csv",
+    file = "C:/Users/SONG/Documents/R_Study/aurora_complete.csv",
     fileEncoding = "UTF-8",
     na.strings = c("", " ", "NA", NA)
 )
@@ -121,16 +121,54 @@ skim(all)
 
 inspect_num(regulate) %>% show_plot()
 
-# train:test = 7:3으로 랜덤 추출
-nrows <- NROW(regulate)
-set.seed(2023)
-index <- sample(1:nrows, 0.7 * nrows)
+# select regulate
+selected_regulate <- regulate %>% select(
+    "YEAR",
+    "MONTH",
+    "DAY",
+    "TIME",
+    "ELECTRON_DATA_STATE",
+    "E_38_53",
+    "E_175_315",
+    "PROTONS_DATA_STATE",
+    "P_47_65",
+    "P_112_187",
+    "P_310_580",
+    "P_761_1220",
+    "P_1060_1910",
+    "GSM_BZ",
+    "GSM_BT",
+    "GSM_LAT",
+    "FLUX_PROTON_STATE1",
+    "tenMeV",
+    "FLUX_PROTON_STATE2",
+    "thirtyMeV",
+    "SW_STATE",
+    "SW_PD",
+    "SW_BS",
+    "SW_IT",
+    "KP"
+)
 
-train <- regulate[index, ]
-test <- regulate[-index, ]
+# train:test = 7:3으로 랜덤 추출
+nrows <- NROW(selected_regulate)
+set.seed(2023)
+# half <- sample(1:nrows, 0.3 * nrows)
+# NROW(half) # 56548
+# str(half)
+# half_seventy <- half[1:39583]
+# half_thirty <- half[39584:56548]
+
+index <- sample(1:nrows, 0.7 * nrows)
+train <- selected_regulate[index, ]
+test <- selected_regulate[-index, ]
+
+# train <- selected_regulate[half_seventy, ]
+# test <- selected_regulate[half_thirty, ]
 
 usethis::edit_r_environ()
 
+summary(selected_regulate)
 
 aurora_model <- randomForest(KP ~ .,
     data = train,
