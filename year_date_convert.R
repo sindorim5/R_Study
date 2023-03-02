@@ -2,7 +2,7 @@ library(dplyr)
 
 # aurora_regulated를 시간별로 sort
 # all <- read.csv(
-#     file = "~/Desktop/AuroraData/aurora_complete.csv",
+#     # file = "~/Desktop/AuroraData/aurora_complete.csv",
 #     # file = "C:/Users/SONG/Documents/R_Study/aurora_regulated.csv",
 #     # file = "C:/Users/multicampus/Documents/R_Study/aurora_regulated.csv",
 #     fileEncoding = "UTF-8",
@@ -16,6 +16,8 @@ str(all)
 
 # YEAR, MONTH, DAY, TIME을 POSIX형으로
 all_orderby_year <- all %>% arrange(YEAR, MONTH)
+
+head(all_orderby_year, 26)
 
 temp <- all_orderby_year
 temp$dateTime <- paste(temp$YEAR,
@@ -31,11 +33,20 @@ temp$dateTime <- paste(temp$YEAR,
     )),
     sep = "-"
 )
+
+head(temp$dateTime, 26)
+head(temp$TIME, 26)
+head(as.integer(temp$TIME), 26)
+
 temp$mTIME <- paste(ifelse(
-    as.integer(temp$TIME) %/% 100 < 10,
-    paste("0", as.integer(temp$TIME) %/% 100, sep = ""),
-    as.integer(temp$TIME) %/% 100
+    as.numeric(temp$TIME) - 1 < 10,
+    paste("0", (as.numeric(temp$TIME) - 1), sep = ""),
+    (as.numeric(temp$TIME) - 1)
 ), "00", sep = ":")
+
+
+head(temp$mTIME, 26)
+
 temp$REAL_TIME <- paste(temp$dateTime, temp$mTIME, sep = " ")
 temp$DATE <- strptime(temp$REAL_TIME, "%Y-%m-%d %H:%M", tz = "UTC")
 

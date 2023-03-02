@@ -13,9 +13,58 @@ all <- readRDS(
     file = "all_orderby_time.rds"
 )
 
-View(all[1, ])
+head(all$DATE, 26)
 
-all_2002 <- all %>% filter(all$DATE$year + 1900 == 2002 | all$DATE$year + 1900 == 2003)
+# only KP
+DATE <- all$DATE
+KP <- all$KP
+
+train <- as.data.frame(DATE)
+train$KP <- KP
+
+trainTS <- ts(
+    train[, -1],
+    frequency = 8760,
+    start = c(2001, 5089)
+)
+
+# 정상성 검정
+## Augmented Dickey-Fuller Test
+## data:  trainTS
+## Dickey-Fuller = -38.169, Lag order = 57, p-value = 0.01
+## alternative hypothesis: stationary
+## 경고메시지(들):
+## adf.test(trainTS)에서: p-value smaller than printed p-value
+adf.test(trainTS)
+
+# 몇 번의 차분?
+ndiffs(trainTS)
+
+dTrainTS <- diff(trainTS)
+
+## Augmented Dickey-Fuller Test
+## data:  dTrainTS
+## Dickey-Fuller = -76.531, Lag order = 57, p-value = 0.01
+## alternative hypothesis: stationary
+## adf.test(dTrainTS)에서: p-value smaller than printed p-value
+adf.test(dTrainTS)
+
+trainTS.arima <- auto.arima(trainTS)
+trainTS.arima
+
+forecast(trainTS.arima, h = 500)
+plot(forecast(trainTS.arima, h = 8760),
+    col = "darkorange", lwd = 2,
+    flty = 1, flwd = 3,
+    fcol = "orangered",
+    shadecols = c("lavender", "skyblue"),
+    xlab = "Year", ylab = "KP",
+    main = "Forecast for KP"
+)
+
+all_2002 <- all %>% filter(
+    all$DATE$year + 1900 == 2002 | all$DATE$year + 1900 == 2003
+)
 
 View(all_2002)
 
