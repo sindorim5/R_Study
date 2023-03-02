@@ -77,6 +77,8 @@ arima(gas,
     seasonal = list(order = c(0, 1, 1), period = 12)
 )
 
+head(Nile)
+
 forecast(gas.arima, h = 5 * 12)
 plot(forecast(gas.arima, h = 5 * 12),
     col = "darkorange", lwd = 2,
