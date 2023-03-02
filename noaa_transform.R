@@ -15,8 +15,8 @@ library(randomForest)
 library(usethis)
 
 all <- read.csv(
-    # file = "~/Desktop/AuroraData/aurora_complete.csv",
-    file = "C:/Users/SONG/Documents/R_Study/aurora_complete.csv",
+    file = "~/Desktop/AuroraData/aurora_complete.csv",
+    # file = "C:/Users/SONG/Documents/R_Study/aurora_complete.csv",
     fileEncoding = "UTF-8",
     na.strings = c("", " ", "NA", NA)
 )
@@ -150,8 +150,15 @@ selected_regulate <- regulate %>% select(
     "KP"
 )
 
+table(selected_regulate$SW_STATE)
+temp <- selected_regulate %>% filter(selected_regulate$ELECTRON_DATA_STATE == -1)
+head(temp, 10)
+
+# 2001년도 데이터
+selected_regulate_2001 <- selected_regulate %>% filter(selected_regulate$YEAR == 2001)
+
 # train:test = 7:3으로 랜덤 추출
-nrows <- NROW(selected_regulate)
+nrows <- NROW(selected_regulate_2001)
 set.seed(2023)
 # half <- sample(1:nrows, 0.3 * nrows)
 # NROW(half) # 56548
@@ -160,17 +167,34 @@ set.seed(2023)
 # half_thirty <- half[39584:56548]
 
 index <- sample(1:nrows, 0.7 * nrows)
+# train_2001 <- selected_regulate_2001[index, ]
+# test_2001 <- selected_regulate_2001[-index, ]
+
 train <- selected_regulate[index, ]
 test <- selected_regulate[-index, ]
 
-# train <- selected_regulate[half_seventy, ]
-# test <- selected_regulate[half_thirty, ]
-
 usethis::edit_r_environ()
 
-summary(selected_regulate)
+str(test_2001)
 
 aurora_model <- randomForest(KP ~ .,
-    data = train,
+    data = train_2001,
+    do.tracer = 10,
     ntree = 500, proximity = TRUE, importance = TRUE
 )
+
+predict_2001 <- predict(aurora_model, test_2001 %>% select(-KP))
+
+
+View(predict_2001)
+str(test_2001$KP)
+
+diff_2001 <- ((test_2001$KP - predict_2001$pred) / test_2001) * 100
+
+model_read <- readRDS(
+    "~/Desktop/AuroraData/randomForest2001_Mark1.rda",
+)
+
+model_read
+
+summary(model_read)
