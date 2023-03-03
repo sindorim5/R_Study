@@ -113,6 +113,77 @@ lstm_model %>% fit(
     shuffle = FALSE
 )
 
+backup_lstm_model <- lstm_model
+
+save_model_tf(lstm_model, "lstm_model/")
+
+############### 여기 부터 돌려야됨 ############################
+
 lstm_forecast <- lstm_model %>%
     predict(x_pred_arr, batch_size = 1) %>%
     .[, , 1]
+
+lstm_forecast <- lstm_forecast * scale_factors[2] + scale_factors[1]
+
+fitted <- predict(lstm_model, x_train_arr, batch_size = 1) %>%
+    .[, , 1]
+backup_fitted <- fitted
+
+# 188353 72
+dim(fitted)
+
+if (dim(fitted)[2] > 1) {
+    print("case 1")
+    fit <- c(fitted[, 1], fitted[dim(fitted)[1], 2:dim(fitted)[2]])
+} else {
+    print("case 2")
+    fit <- fitted[, 1]
+}
+
+# make fit to be original scale
+fitted <- fit * scale_factors[2] + scale_factors[1]
+
+View(fitted)
+
+str(fitted)
+
+# 첫 번째 예측 값 지워주기
+fitted <- c(rep(NA, lag), fitted)
+
+View(fitted)
+
+str(fitted)
+
+lstm_forecast <- timetk::tk_ts(lstm_forecast,
+    start = c(2001, 5091),
+    end = c(2023, 673),
+    frequency = 24 * 365.25
+)
+
+# 입력 시계열
+input_ts <- timetk::tk_ts(
+    all$KP,
+    start = c(2023, 674),
+    end = c(2023, 745),
+    frequency = 24 * 365.25
+)
+
+# 예측값 객체 정의
+forecast_list <- list(
+    model = NULL,
+    method = "LSTM",
+    mean = lstm_forecast,
+    x = input_ts,
+    fitted = fitted,
+    residuals = as.numeric(input_ts) - as.numeric(fitted)
+)
+
+class(forecast_list) <- "forecast"
+
+forecast::autoplot(forecast_list)
+
+forecast_list
+
+str(forecast_list$x)
+
+tail(forecast_list$x, 72)

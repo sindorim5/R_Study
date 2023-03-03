@@ -121,12 +121,8 @@ lstm_forecast <- lstm_forecast * scale_factors[2] + scale_factors[1]
 fitted <- predict(lstm_model, x_train_arr, batch_size = 1) %>%
     .[, , 1]
 
-asdf <- fitted
-
 # 551 12
 dim(fitted)
-
-str(asdf)
 
 if (dim(fitted)[2] > 1) {
     print("case 1")
