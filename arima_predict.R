@@ -62,6 +62,12 @@ plot(forecast(trainTS.arima, h = 8760),
     main = "Forecast for KP"
 )
 
+
+
+##########################################
+
+
+
 all_2002 <- all %>% filter(
     all$DATE$year + 1900 == 2002 | all$DATE$year + 1900 == 2003
 )

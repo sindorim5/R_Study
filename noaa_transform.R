@@ -15,8 +15,9 @@ library(randomForest)
 library(usethis)
 
 all <- read.csv(
-    file = "~/Desktop/AuroraData/aurora_complete.csv",
+    # file = "~/Desktop/AuroraData/aurora_complete.csv",
     # file = "C:/Users/SONG/Documents/R_Study/aurora_complete.csv",
+    file = "aurora_complete.csv",
     fileEncoding = "UTF-8",
     na.strings = c("", " ", "NA", NA)
 )
