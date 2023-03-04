@@ -25,6 +25,10 @@ KP.ts <- ts(KP, start = c(2002, 1), frequency = 24 * 365.25)
 KP.arima <- auto.arima(KP.ts)
 KP.arima
 
+KP.arima.pred <- forecast(KP.arima, h = 10000)
+
+plot(KP.arima.pred)
+
 # MA = 3 으로 간소화
 KP.ts.SMA3 <- SMA(KP.ts,
     start = c(2002, 1),
@@ -39,8 +43,12 @@ KP.ts.SMA12 <- SMA(KP.ts,
     n = 12
 )
 
+# seasonal
 KPcomponents <- decompose(KP.ts)
 plot(KPcomponents)
+
+KP.ts.adjust <- KP.ts - KPcomponents$seasonal
+plot(KP.ts.adjust)
 
 # beta: If set to FALSE , the function will do exponential smoothing.
 # gamma: If set to FALSE , an non-seasonal model is fitted.
@@ -54,8 +62,8 @@ str(KPforecasts)
 
 plot(KPforecasts)
 
-KPforecasts2 <- forecast(KPforecasts, h = 12)
+KPforecasts2 <- forecast(KPforecasts, h = 8766)
 
-KPforecasts2
+plot(KPforecasts2)
 
-tail(all_2002$DATE)
+head(KPforecasts2$mean, 12)
