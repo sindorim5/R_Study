@@ -104,15 +104,13 @@ getConstellationList <- function(city) {
     latitude <- cities[cities$city == city, "latitude"]
     constellation_list <- constellations[
         which(constellations$latitudestart >= latitude & constellations$latitudeend <= latitude),
-    "constellation"]
+        "constellation"
+    ]
     return(constellation_list)
 }
 c_list <- getConstellationList("Abu Dhabi")
-
 getMeteorShowerList <- function(constellation_list) {
-
     best_moon_dates <- data.frame(constellation = character(), date = character())
-
     for (constellation in constellation_list) {
         meteor_shower <- meteor_showers[meteor_showers$radiant == constellation, "name"][1]
         meteor_shower_startdate <- meteor_showers[meteor_showers$radiant == constellation, "startdate"][1]
@@ -121,15 +119,15 @@ getMeteorShowerList <- function(constellation_list) {
             moon_phases$date >= meteor_shower_startdate & moon_phases$date <= meteor_shower_enddate,
         ]
         best_moon_date <- moon_phases_list[which.min(moon_phases_list$percentage), "date"]
+        best_moon_dates <- rbind(
+            best_moon_dates,
+            data.frame(constellation = constellation, date = best_moon_date)
+        )
     }
+    return(best_moon_dates)
 }
+test <- getMeteorShowerList(c_list)
 
+test
 
-meteor_shower <- meteor_showers[meteor_showers$radiant == constellation, "name"][1]
-
-meteor_shower_startdate <- meteor_showers[meteor_showers$radiant == constellation, "startdate"][1]
-meteor_shower_enddate <- meteor_showers[meteor_showers$radiant == constellation, "enddate"][1]
-
-moon_phases_list <- moon_phases[moon_phases$date >= meteor_shower_startdate & moon_phases$date <= meteor_shower_enddate,]
-
-best_moon_date <- moon_phases_list[which.min(moon_phases_list$percentage), "date"]
+str(meteor_showers)
