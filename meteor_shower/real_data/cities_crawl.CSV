@@ -1,32 +1,32 @@
 Latitude,City,Country
-−0.25,Quito,Ecuador
+-0.25,Quito,Ecuador
 0.3,Kampala,Uganda
 0.33,São Tomé,São Tomé and Príncipe
 0.38,Libreville,Gabon
-−0.53,Yaren (de facto),Nauru
-−1.28,Nairobi,Kenya
+-0.53,Yaren (de facto),Nauru
+-1.28,Nairobi,Kenya
 1.28,Singapore,Singapore
 1.43,Tarawa,Kiribati
-−1.93,Kigali,Rwanda
+-1.93,Kigali,Rwanda
 2.03,Mogadishu,Somalia
 3.13,Kuala Lumpur,Malaysia
-−3.43,Gitega,Burundi
+-3.43,Gitega,Burundi
 3.75,Malabo,Equatorial Guinea
 3.87,Yaoundé,Cameroon
 4.17,Malé,Maldives
-−4.27,Brazzaville,Republic of the Congo
-−4.32,Kinshasa,Democratic Republic of the Congo
+-4.27,Brazzaville,Republic of the Congo
+-4.32,Kinshasa,Democratic Republic of the Congo
 4.37,Bangui,Central African Republic
 4.58,Bogotá,Colombia
-−4.62,Victoria,Seychelles
+-4.62,Victoria,Seychelles
 4.85,Juba,South Sudan
 4.88,Bandar Seri Begawan,Brunei
 4.92,Cayenne,French Guiana
 5.55,Accra,Ghana
 5.87,Paramaribo,Suriname
 6.12,Lomé,Togo
-−6.17,Dodoma,Tanzania
-−6.2,Jakarta,Indonesia
+-6.17,Dodoma,Tanzania
+-6.2,Jakarta,Indonesia
 6.3,Monrovia,Liberia
 6.48,Porto-Novo,Benin
 6.8,Georgetown,Guyana
@@ -35,48 +35,48 @@ Latitude,City,Country
 6.92,Palikir,Federated States of Micronesia
 7.07,Majuro,Marshall Islands
 7.48,Ngerulmud,Palau
-−7.92,Georgetown,Ascension Island
+-7.92,Georgetown,Ascension Island
 8.48,Freetown,Sierra Leone
-−8.52,Funafuti,Tuvalu
-−8.57,Dili,East Timor (Timor-Leste)
-−8.83,Luanda,Angola
+-8.52,Funafuti,Tuvalu
+-8.57,Dili,East Timor (Timor-Leste)
+-8.83,Luanda,Angola
 8.98,Panama City,Panama
 9.02,Addis Ababa,Ethiopia
 9.07,Abuja,Nigeria
-−9.43,Honiara,Solomon Islands
-−9.5,Port Moresby,Papua New Guinea
+-9.43,Honiara,Solomon Islands
+-9.5,Port Moresby,Papua New Guinea
 9.52,Conakry,Guinea
 9.93,San José,Costa Rica
 10,Hargeisa,Somaliland
-−10.42,Flying Fish Cove,Christmas Island
+-10.42,Flying Fish Cove,Christmas Island
 10.5,Caracas,Venezuela
 10.67,Port of Spain,Trinidad and Tobago
 11.55,Phnom Penh,Cambodia
 11.58,Djibouti,Djibouti
-−11.68,Moroni,Comoros
+-11.68,Moroni,Comoros
 11.85,Bissau,Guinea-Bissau
-−12.03,Lima,Peru
+-12.03,Lima,Peru
 12.05,St. George's,Grenada
 12.1,N'Djamena,Chad
 12.12,Willemstad,Curaçao
 12.13,Managua,Nicaragua
-−12.18,West Island,Cocos (Keeling) Islands
+-12.18,West Island,Cocos (Keeling) Islands
 12.35,Ouagadougou,Burkina Faso
 12.52,Oranjestad,Aruba
 12.65,Bamako,Mali
 13.1,Bridgetown,Barbados
 13.15,Kingstown,Saint Vincent and the Grenadines
-−13.28,Mata-Utu,Wallis and Futuna
+-13.28,Mata-Utu,Wallis and Futuna
 13.45,Banjul,Gambia
 13.47,Hagåtña,Guam
 13.52,Niamey,Niger
 13.68,San Salvador,El Salvador
 13.75,Bangkok,Thailand
-−13.83,Apia,Samoa
-−13.98,Lilongwe,Malawi
+-13.83,Apia,Samoa
+-13.98,Lilongwe,Malawi
 14.02,Castries,Saint Lucia
 14.1,Tegucigalpa,Honduras
-−14.27,Pago Pago,American Samoa
+-14.27,Pago Pago,American Samoa
 14.58,Manila,Philippines
 14.6,Guatemala City,Guatemala
 14.68,Dakar,Senegal
@@ -85,66 +85,66 @@ Latitude,City,Country
 15.3,Roseau,Dominica
 15.33,Asmara,Eritrea
 15.33,Sana'a,Yemen
-−15.42,Lusaka,Zambia
+-15.42,Lusaka,Zambia
 15.63,Khartoum,Sudan
-−15.78,Brasília,Brazil
-−15.92,Jamestown,Saint Helena
-−16.5,Sucre,Bolivia
+-15.78,Brasília,Brazil
+-15.92,Jamestown,Saint Helena
+-16.5,Sucre,Bolivia
 17.12,St. John's,Antigua and Barbuda
 17.25,Belmopan,Belize
 17.3,Basseterre,Saint Kitts and Nevis
-−17.53,Papeete,French Polynesia
-−17.75,Port Vila,Vanuatu
-−17.85,Harare,Zimbabwe
+-17.53,Papeete,French Polynesia
+-17.75,Port Vila,Vanuatu
+-17.85,Harare,Zimbabwe
 17.88,Gustavia,Saint Barthélemy
 17.97,Vientiane,Laos
 17.98,Kingston,Jamaica
 18.02,Philipsburg,Sint Maarten
 18.07,Marigot,Saint Martin
 18.1,Nouakchott,Mauritania
-−18.13,Suva,Fiji
+-18.13,Suva,Fiji
 18.22,The Valley,Anguilla
 18.35,Charlotte Amalie,United States Virgin Islands
 18.42,Road Town,British Virgin Islands
 18.45,San Juan,Puerto Rico
 18.47,Santo Domingo,Dominican Republic
 18.53,Port-au-Prince,Haiti
-−18.93,Antananarivo,Madagascar
-−19.07,Alofi,Niue
+-18.93,Antananarivo,Madagascar
+-19.07,Alofi,Niue
 19.3,George Town,Cayman Islands
 19.43,Mexico City,Mexico
 19.75,Naypyidaw,Myanmar
-−20.15,Port Louis,Mauritius
+-20.15,Port Louis,Mauritius
 21.03,Hanoi,Vietnam
-−21.13,Nukuʻalofa,Tonga
-−21.2,Avarua,Cook Islands
+-21.13,Nukuʻalofa,Tonga
+-21.2,Avarua,Cook Islands
 22.18,Wan Chai,Hong Kong
-−22.27,Nouméa,New Caledonia
-−22.57,Windhoek,Namibia
+-22.27,Nouméa,New Caledonia
+-22.57,Windhoek,Namibia
 23.13,Havana,Cuba
 23.6,Muscat,Oman
 23.73,Dhaka,Bangladesh
 24.47,Abu Dhabi,United Arab Emirates
 24.63,Riyadh,Saudi Arabia
-−24.65,Gaborone,Botswana
+-24.65,Gaborone,Botswana
 25.03,Taipei,Taiwan
-−25.07,Adamstown,Pitcairn Islands
+-25.07,Adamstown,Pitcairn Islands
 25.07,Nassau,Bahamas
-−25.27,Asunción,Paraguay
+-25.27,Asunción,Paraguay
 25.28,Doha,Qatar
-−25.73,Pretoria (executive),South Africa
-−25.97,Maputo,Mozambique
+-25.73,Pretoria (executive),South Africa
+-25.97,Maputo,Mozambique
 26.22,Manama,Bahrain
-−26.32,Mbabane (administrative),Eswatini
-−26.42,Lobamba (royal and legislative),Eswatini (Swaziland)
-27.15,El Aaiún(declared),Sahrawi Arab Democratic Republic [c]
-−27.15,Hanga Roa,Easter Island
+-26.32,Mbabane (administrative),Eswatini
+-26.42,Lobamba (royal and legislative),Eswatini (Swaziland)
+27.15,El Aaiún(declared),Sahrawi Arab Democratic Republic
+-27.15,Hanga Roa,Easter Island
 27.47,Thimphu,Bhutan
-27.7,Kathmandu,  Nepal
+27.7,Kathmandu,Nepal
 28.6,New Delhi,India
-−29.05,Kingston,Norfolk Island
-−29.12,Bloemfontein (judicial),South Africa
-−29.3,Maseru,Lesotho
+-29.05,Kingston,Norfolk Island
+-29.12,Bloemfontein (judicial),South Africa
+-29.3,Maseru,Lesotho
 29.37,Kuwait City,Kuwait
 30.05,Cairo,Egypt
 31.78,"Jerusalem (declared, de facto)",Israel
@@ -152,26 +152,26 @@ Latitude,City,Country
 32.28,Hamilton,Bermuda
 32.9,Tripoli,Libya
 33.33,Baghdad,Iraq
-−33.45,Santiago (official),Chile
+-33.45,Santiago (official),Chile
 33.5,Damascus,Syria
 33.72,Islamabad,Pakistan
 33.88,Beirut,Lebanon
-−33.92,Cape Town (legislative),South Africa
+-33.92,Cape Town (legislative),South Africa
 34.03,Rabat,Morocco
 34.53,Kabul,Afghanistan
-−34.6,Buenos Aires,Argentina
+-34.6,Buenos Aires,Argentina
 34.67,Episkopi Cantonment,Akrotiri and Dhekelia
-−34.88,Montevideo,Uruguay
+-34.88,Montevideo,Uruguay
 35.17,Nicosia,Cyprus
 35.17,Nicosia,Northern Cyprus
-−35.3,Canberra,Australia
+-35.3,Canberra,Australia
 35.68,Tehran,Iran
 35.68,Tokyo,Japan
 35.88,Valletta,Malta
 36.13,Gibraltar,Gibraltar
 36.77,Algiers,Algeria
 36.8,Tunis,Tunisia
-−37.07,Edinburgh of the Seven Seas,Tristan da Cunha
+-37.07,Edinburgh of the Seven Seas,Tristan da Cunha
 37.55,Seoul,South Korea
 37.93,Ashgabat,Turkmenistan
 37.97,Athens,Greece
@@ -186,7 +186,7 @@ Latitude,City,Country
 40.38,Baku,Azerbaijan
 40.38,Madrid,Spain
 41.27,Tashkent,Uzbekistan
-−41.28,Wellington,New Zealand
+-41.28,Wellington,New Zealand
 41.32,Tirana,Albania
 41.72,Tbilisi (official),Georgia
 41.9,Rome,Italy
@@ -196,7 +196,7 @@ Latitude,City,Country
 42.25,Kutaisi (legislative),Georgia
 42.43,Podgorica (official),Montenegro
 42.5,Andorra la Vella,Andorra
-42.67,Pristina,Kosovo[g]
+42.67,Pristina,Kosovo
 42.7,Sofia,Bulgaria
 42.87,Bishkek,Kyrgyzstan
 43,Sukhumi,Abkhazia
@@ -210,7 +210,7 @@ Latitude,City,Country
 46.05,Ljubljana,Slovenia
 46.77,St. Pierre,Saint Pierre and Miquelon
 46.85,Tiraspol,Transnistria
-46.95,Bern, Switzerland
+46.95,Bern,Switzerland
 47,Chişinău,Moldova
 47.13,Vaduz,Liechtenstein
 47.47,Budapest,Hungary
@@ -226,14 +226,14 @@ Latitude,City,Country
 50.85,Brussels,Belgium
 51.17,Astana,Kazakhstan
 51.5,London,United Kingdom
-−51.68,Stanley,Falkland Islands
+-51.68,Stanley,Falkland Islands
 52.23,Warsaw,Poland
 52.37,Amsterdam,Netherlands
 52.52,Berlin,Germany
 53.33,Dublin,Ireland
 53.9,Minsk,Belarus
 54.13,Douglas,Isle of Man
-−54.27,King Edward Point,South Georgia and the South Sandwich Islands
+-54.27,King Edward Point,South Georgia and the South Sandwich Islands
 54.68,Vilnius,Lithuania
 55.67,Copenhagen,Denmark
 55.75,Moscow,Russia

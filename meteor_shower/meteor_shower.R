@@ -108,7 +108,7 @@ getConstellationList <- function(city) {
     ]
     return(constellation_list)
 }
-c_list <- getConstellationList("Abu Dhabi")
+c_list <- getConstellationList("Seoul")
 getMeteorShowerList <- function(constellation_list) {
     best_moon_dates <- data.frame(constellation = character(), date = character())
     for (constellation in constellation_list) {
@@ -131,3 +131,5 @@ test <- getMeteorShowerList(c_list)
 test
 
 str(meteor_showers)
+
+str(cities$city)
