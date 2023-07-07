@@ -7,7 +7,7 @@ predictThreeDayKP <- function(KP_data) {
         !(list.of.packages %in% installed.packages()[, "Package"])
     ]
     if (length(new.packages)) {
-        install.packages(new.packages, repos = "http://cran.us.r-project.org")
+        install.packages(new.packages, repos = "http://cran.us.r-project.org", dependencies = TRUE)
     }
     library(tensorflow)
     library(keras)

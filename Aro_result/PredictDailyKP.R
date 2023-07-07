@@ -6,7 +6,7 @@ predictDailyKP <- function(regulate, number) {
         !(list.of.packages %in% installed.packages()[, "Package"])
     ]
     if (length(new.packages)) {
-        install.packages(new.packages, repos = "http://cran.us.r-project.org")
+        install.packages(new.packages, repos = "http://cran.us.r-project.org", dependencies = TRUE)
     }
     library(lubridate)
     library(dplyr)

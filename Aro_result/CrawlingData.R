@@ -1,13 +1,14 @@
 crawlingData <- function(input_date) {
-    # ex) input_date = "2023-02-01"
+    # 오늘의 한 달 전 날짜를 넣는다.
+    # 오늘이 "2023-07-07" 이면 input_date = "2023-06-07"
     # 결과값은 정규화 되어 바로 랜덤포레스트에 넣을 수 있음
     # Installing Packages that are not already available in the system
-    list.of.packages <- c("lubridate", "dplyr", "zoo", "caret")
+    list.of.packages <- c("lubridate", "dplyr", "zoo", "caret", "future.apply")
     new.packages <- list.of.packages[
         !(list.of.packages %in% installed.packages()[, "Package"])
     ]
     if (length(new.packages)) {
-        install.packages(new.packages, repos = "http://cran.us.r-project.org")
+        install.packages(new.packages, repos = "http://cran.us.r-project.org", dependencies = TRUE)
     }
     library(lubridate)
     library(dplyr)
